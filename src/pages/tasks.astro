@@ -1,0 +1,17 @@
+---
+import { DataTable } from "@/components/datatable/datatable";
+import Layout from "../layouts/BlogPost.astro";
+import { getTasks } from "@/lib/data/tasks";
+import { columns } from "@/lib/data/tasks/columns";
+const tasks = await getTasks();
+---
+
+<Layout
+  title="About Me"
+  description="Lorem ipsum dolor sit amet"
+  pubDate={new Date("August 08 2021")}
+>
+  <div>
+    <DataTable data={tasks} columns={columns} client:load />
+  </div>
+</Layout>
